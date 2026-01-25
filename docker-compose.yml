@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: ClientApp/Dockerfile
     ports:
-      - "80:80"
-      - "443:443"  # Открываем порт для HTTPS
+      - "80"
+      - "443"  # Открываем порт для HTTPS
     networks:
       - my-network
 
