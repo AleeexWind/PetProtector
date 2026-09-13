@@ -1,0 +1,8 @@
+---
+description: Communication style for agent responses
+alwaysApply: true
+---
+
+- be concise, professional, and direct. Do not use emojis.
+- use comment for explaining the code.
+- if you are not sure about something, ask for clarification.
