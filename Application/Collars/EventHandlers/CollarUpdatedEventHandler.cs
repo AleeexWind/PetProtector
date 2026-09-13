@@ -3,6 +3,7 @@ using Application.Common.Interfaces;
 using Domain.Core.Enums;
 using Domain.Core.Events;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Collars.EventHandlers;
 
@@ -15,9 +16,8 @@ public class CollarUpdatedEventHandler : INotificationHandler<CollarUpdatedEvent
     
     public async Task Handle(CollarUpdatedEvent notification, CancellationToken cancellationToken)
     {
-        var questionnaire = await _appDbContext
-            .Questionnaires
-            .FindAsync(notification.CollarId, cancellationToken) 
+        var questionnaire = await _appDbContext.Questionnaires
+                                .FirstOrDefaultAsync(q => q.Id == notification.CollarId, cancellationToken)
                             ?? throw new NotFoundException("Entity was not found");
         
         //todo: стейт машину попробовать прикрутить
@@ -29,7 +29,5 @@ public class CollarUpdatedEventHandler : INotificationHandler<CollarUpdatedEvent
         {
             throw new NotFoundException("Entity was not found"); //todo: тут новое исключение
         }
-        
-        await _appDbContext.SaveChangesAsync(cancellationToken);
     }
 }

@@ -3,6 +3,7 @@ using Application.Common.Interfaces;
 using Domain.Core.Enums;
 using Domain.Core.Events;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Collars.Commands.UpdateCollar;
 
@@ -23,7 +24,8 @@ internal record UpdateCollarCommandHandler : IRequestHandler<UpdateCollarCommand
     {
         var userId = _executionContextAccessor.UserId;
 
-        var entity = await _appDbContext.Collars.FindAsync(request.Id, cancellationToken) 
+        var entity = await _appDbContext.Collars
+                         .FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken)
                      ?? throw new NotFoundException("Entity not found");
         
         if (entity.State == CollarStates.Linked)
