@@ -1,0 +1,10 @@
+---
+description: C# code style conventions
+globs: **/*.cs
+alwaysApply: false
+---
+
+- use primary constructors
+- use var where it is possible
+- use Async suffix
+- write xml comments for all public elements
