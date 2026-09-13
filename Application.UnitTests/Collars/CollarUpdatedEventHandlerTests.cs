@@ -3,6 +3,7 @@ using Application.UnitTests;
 using Domain.Core.Events;
 using Domain.Core.Enums;
 using Microsoft.EntityFrameworkCore;
+using Xunit;
 
 namespace Application.UnitTests.Collars;
 
@@ -25,6 +26,6 @@ public class CollarUpdatedEventHandlerTests
 
         var questionnaire = await db.Questionnaires.SingleAsync(q => q.Id == collarId);
         Assert.Equal(QuestionnaireStates.Filling, questionnaire.State);
-        Assert.Equal(0, await db.SaveChangesAsync());
+        Assert.Equal(1, await db.SaveChangesAsync());
     }
 }

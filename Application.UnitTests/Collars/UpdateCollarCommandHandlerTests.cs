@@ -5,6 +5,7 @@ using Domain.Core.Enums;
 using Infrastructure.Percistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Xunit;
 
 namespace Application.UnitTests.Collars;
 
