@@ -1,0 +1,7 @@
+---
+description: Practices that must never be used
+alwaysApply: true
+---
+
+- never hardcode API keys, secrets, or passwords in the code
+- never use deprecated code
