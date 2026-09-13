@@ -6,5 +6,5 @@ alwaysApply: false
 
 - use primary constructors
 - use var where it is possible
-- use Async suffix
+- use Async suffix in method naming in asyncronious methods
 - write xml comments for all public elements
